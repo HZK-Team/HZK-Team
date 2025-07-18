@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HZK Team 官方网站</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        html, body {
+            height: 100%;
+            min-height: 100vh;
+        }
+        
+        body {
+            background-color: white;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            background-color: #1976D2;
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            flex-shrink: 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .team-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 1rem;
+            border: 3px solid white;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            flex: 1 0 auto;
+        }
+        
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            opacity: 0.9;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(25, 118, 210, 0.1);
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            border: 1px solid #e3f2fd;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(25, 118, 210, 0.15);
+        }
+        
+        .card-icon {
+            font-size: clamp(2.5rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+            color: #1976D2;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .card h2 {
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
+            margin-bottom: 0.5rem;
+            color: #1976D2;
+        }
+        
+        .card p {
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            margin-top: auto;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            max-width: min(90%, 500px);
+            width: 100%;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(25, 118, 210, 0.2);
+        }
+        
+        .close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #1976D2;
+        }
+        
+        .donation-image {
+            width: 100%;
+            max-width: 300px;
+            margin: 1rem auto;
+            display: block;
+            border-radius: 8px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background-color: #1976D2;
+            color: white;
+            flex-shrink: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-logo {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            
+            .cards {
+                gap: 1.5rem;
+            }
+            
+            .card {
+                padding: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1.5rem 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .card-icon {
+                min-height: 50px;
+            }
+        }
+    </style>
+    <!-- 预加载关键CSS -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <!-- 在这里替换为团队logo链接 -->
+            <img src="https://github.com/HZK-20130814/picx-images-hosting/raw/master/HZK-Team-Logo.md8aih8s.webp" class="team-logo">
+            <div>
+                <h1>HZK Team</h1>
+                <p class="tagline">专业的技术团队，为您提供优质服务</p>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="cards">
+            <div class="card" id="pricing">
+                <div class="card-icon">💰</div>
+                <h2>我们的价格</h2>
+                <p>查看我们的服务价格表</p>
+            </div>
+            
+            <div class="card" id="contact">
+                <div class="card-icon">📧</div>
+                <h2>联系我们</h2>
+                <p>获取我们的联系方式</p>
+            </div>
+            
+            <div class="card" id="join">
+                <div class="card-icon">👥</div>
+                <h2>加入我们</h2>
+                <p>成为HZK Team的一员</p>
+            </div>
+            
+            <div class="card" id="donate">
+                <div class="card-icon">❤️</div>
+                <h2>打赏/支持我们</h2>
+                <p>支持我们的发展</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 联系我们模态框 -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>联系我们</h2>
+            <p>这是我们的联系方式：</p>
+            <p>📱 微信：make_html</p>
+            <p>💬 QQ：2237413947</p>
+            <p>📧 邮箱：hzk_team@163.com</p>
+        </div>
+    </div>
+    
+    <!-- 加入我们模态框 -->
+    <div class="modal" id="joinModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>加入我们</h2>
+            <p>请添加HZK Team的QQ好友进行加入和咨询</p>
+            <p>💬 QQ: 2237413947</p>
+        </div>
+    </div>
+    
+    <!-- 打赏模态框 - 显示图片 -->
+    <div class="modal" id="donateModal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>打赏/支持我们</h2>
+            <p>感谢您的支持！请扫描下方二维码打赏：</p>
+            <img src="https://github.com/HZK-20130814/picx-images-hosting/raw/master/赞赏.7sni7yaswq.webp" class="donation-image">
+            <p>打开微信扫一扫，支持HZK Team</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 HZK Team 保留所有权利</p>
+    </footer>
+    
+    <script>
+        // 预加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 我们的价格 - 跳转
+            document.getElementById('pricing').addEventListener('click', function() {
+                window.location.href = 'https://hzk-20130814.github.io/HZK-R/';
+            });
+            
+            // 联系我们 - 显示模态框
+            document.getElementById('contact').addEventListener('click', function() {
+                document.getElementById('contactModal').style.display = 'flex';
+            });
+            
+            // 加入我们 - 显示模态框
+            document.getElementById('join').addEventListener('click', function() {
+                document.getElementById('joinModal').style.display = 'flex';
+            });
+            
+            // 打赏/支持我们 - 显示模态框
+            document.getElementById('donate').addEventListener('click', function() {
+                document.getElementById('donateModal').style.display = 'flex';
+            });
+            
+            // 关闭模态框
+            const closeButtons = document.querySelectorAll('.close');
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // 点击模态框外部关闭
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this) {
+                        this.style.display = 'none';
+                    }
+                });
+            });
+            
+            // 动态调整布局
+            function adjustLayout() {
+                const container = document.querySelector('.container');
+                const header = document.querySelector('header');
+                const footer = document.querySelector('footer');
+                
+                // 确保内容区域最小高度填满屏幕
+                const minHeight = window.innerHeight - header.offsetHeight - footer.offsetHeight;
+                container.style.minHeight = `${minHeight}px`;
+            }
+            
+            // 初始调整
+            adjustLayout();
+            
+            // 窗口大小改变时重新调整
+            window.addEventListener('resize', adjustLayout);
+        });
+
+        // 异步加载字体图标库
+        if (!document.fonts || !document.fonts.check('1em FontAwesome')) {
+            const faScript = document.createElement('script');
+            faScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js';
+            faScript.defer = true;
+            document.head.appendChild(faScript);
+        }
+    </script>
+</body>
+</html>
+<!-- 作者:HZK,QQ:2237413947 -->
